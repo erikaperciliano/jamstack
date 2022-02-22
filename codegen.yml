@@ -1,0 +1,18 @@
+overwrite: true
+
+schema: 'https://api-sa-east-1.graphcms.com/v2/ckzy9kmi85pnq01z84dd9h8mn/master'
+
+documents: './src/graphql/**/*.graphql'
+
+generates:
+  src/generated/graphql.tsx:
+    plugins: 
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-urql'
+    config:
+      withHooks: true
+
+hooks:
+  afterAllFileWrite:
+    - eslint --fix
